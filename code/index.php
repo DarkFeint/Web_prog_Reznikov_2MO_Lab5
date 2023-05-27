@@ -3,16 +3,19 @@ function SuperGet(){
 
     $mysqli = new mysqli('db', 'root', 'helloworld', 'web');
 
-    if (mysqli_connect_errno()){
-        printf('Can not connect to mysql sever.Error code: %s', mysqli_connect_errno());
+    if (mysqli_connect_errno())
+    {
+        printf('Can not connec to mysql sever.Error code: %s', mysqli_connect_errno());
         exit;
     }
     $response = array();
 $i =0;
 $j = 0;
 
-    if ($result = $mysqli->query('SELECT * from ad')) {
-        while ($row = $result->fetch_assoc()) {
+    if ($result = $mysqli->query('SELECT * from ad')) 
+    {
+        while ($row = $result->fetch_assoc()) 
+        {
             $response[$i][$j] = $row['category'];
             $j = $j + 1;
             $response[$i][$j] = $row['email'];
@@ -24,7 +27,7 @@ $j = 0;
             $i = $i + 1;
         }
             $result->close();
-        }
+    }
 
     $mysqli->close();
 
